@@ -72,6 +72,10 @@ function HomePage() {
     <>
       <ScrollProgress />
 
+      {/* Scroll-driven plane that flies from hero into next section */}
+      <div className="relative">
+        <ScrollPlane />
+
       {/* HERO */}
       <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
