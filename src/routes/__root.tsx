@@ -128,7 +128,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {!isHome && <SiteHeader />}
+      <SiteHeader overHero={isHome} />
       <main className="min-h-screen">
         <Outlet />
       </main>
