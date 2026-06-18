@@ -95,7 +95,12 @@ export function VexHero() {
       {/* Flying plane overlay */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 animate-plane-fly will-change-transform">
-          <Plane className="h-10 w-10 md:h-14 md:w-14 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]" />
+          <img
+            src={planeImg}
+            alt="Aircraft"
+            className="h-16 md:h-20 w-auto drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)]"
+            loading="eager"
+          />
         </div>
       </div>
 
