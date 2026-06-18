@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
+import planeImg from "@/assets/plane.png";
 
 const VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260403_050628_c4e32401-fab4-4a27-b7a8-6e9291cd5959.mp4";
@@ -77,22 +78,6 @@ function AnimatedHeading({
   );
 }
 
-function Plane({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      className={className}
-      fill="none"
-      stroke="white"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2 34 L60 30 L52 22 L48 24 L36 24 L24 8 L20 9 L26 26 L14 28 L8 22 L5 23 L9 30 L4 32 Z" fill="rgba(255,255,255,0.85)" />
-      <path d="M60 30 L56 36 L46 34" />
-    </svg>
-  );
-}
 
 export function VexHero() {
   return (
@@ -110,7 +95,12 @@ export function VexHero() {
       {/* Flying plane overlay */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 animate-plane-fly will-change-transform">
-          <Plane className="h-10 w-10 md:h-14 md:w-14 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]" />
+          <img
+            src={planeImg}
+            alt="Aircraft"
+            className="h-16 md:h-20 w-auto drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)]"
+            loading="eager"
+          />
         </div>
       </div>
 
