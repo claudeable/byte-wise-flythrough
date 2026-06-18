@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Award, Globe2, Handshake, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroGlobe } from "@/components/site/HeroGlobe";
-import { IconAviation, IconSoftware, IconTrading } from "@/components/site/PillarIcons";
 import { Reveal, Stagger, StaggerItem } from "@/components/site/Reveal";
 import { Eyebrow, SectionHeading } from "@/components/site/SectionHeading";
 import { PartnerLogo } from "@/components/site/PartnerLogo";
@@ -10,6 +9,9 @@ import { Counter } from "@/components/site/Counter";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { ScrollPlane } from "@/components/site/ScrollPlane";
 import { VexHero } from "@/components/site/VexHero";
+import pillarSoftware from "@/assets/pillar-software.jpg";
+import pillarAviation from "@/assets/pillar-aviation.jpg";
+import pillarTrading from "@/assets/pillar-trading.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,20 +29,23 @@ const pillars = [
   {
     title: "Digital Identity & Software",
     body: "Smart cards, identity management, and data platforms — engineered with global tech partners.",
-    Icon: IconSoftware,
+    image: pillarSoftware,
     to: "/services/software" as const,
+    tag: "01 / Software",
   },
   {
     title: "Aviation Advisory",
     body: "Safety audits, compliance frameworks, and operational support for airlines and airports.",
-    Icon: IconAviation,
+    image: pillarAviation,
     to: "/services/aviation" as const,
+    tag: "02 / Aviation",
   },
   {
     title: "Trading & Commodities",
     body: "Office supply, consumer goods, and staple commodities — rice, sugar, edible oil — across East Africa.",
-    Icon: IconTrading,
+    image: pillarTrading,
     to: "/services/trading" as const,
+    tag: "03 / Trading",
   },
 ];
 
@@ -97,18 +102,34 @@ function HomePage() {
           </Reveal>
 
           <Stagger className="mt-14 grid md:grid-cols-3 gap-6">
-            {pillars.map(({ title, body, Icon, to }) => (
+            {pillars.map(({ title, body, image, to, tag }) => (
               <StaggerItem key={title}>
-                <Link to={to} className="group block relative rounded-3xl bg-card border border-border p-8 card-lift overflow-hidden h-full">
-                  <div className="absolute inset-x-0 top-0 h-px shimmer-line" />
-                  <div className="text-primary group-hover:text-accent transition-colors duration-300">
-                    <Icon className="h-16 w-16 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3" />
+                <Link
+                  to={to}
+                  className="group block relative rounded-3xl bg-card border border-border card-lift overflow-hidden h-full"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={image}
+                      alt={title}
+                      loading="lazy"
+                      width={1024}
+                      height={768}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                    <span className="absolute top-4 left-4 text-[10px] font-mono tracking-[0.25em] uppercase text-white/90 bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15">
+                      {tag}
+                    </span>
                   </div>
-                  <h3 className="mt-6 text-2xl font-bold leading-tight">{title}</h3>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">{body}</p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
-                    Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
+                  <div className="p-7 lg:p-8 -mt-2 relative">
+                    <h3 className="text-2xl font-bold leading-tight">{title}</h3>
+                    <p className="mt-3 text-muted-foreground leading-relaxed">{body}</p>
+                    <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent transition-colors">
+                      Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                  <div className="absolute inset-x-0 top-0 h-px shimmer-line z-10" />
                 </Link>
               </StaggerItem>
             ))}
