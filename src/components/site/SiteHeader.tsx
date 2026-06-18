@@ -14,7 +14,7 @@ const nav = [
   { to: "/insights", label: "Insights" },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -24,6 +24,8 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const transparent = overHero && !scrolled;
 
   return (
     <header
@@ -36,7 +38,7 @@ export function SiteHeader() {
     >
       <div className="container-bw flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-2" aria-label="Byte Wise home">
-          <Logo className="h-8 w-auto" />
+          <Logo className={cn("h-8 w-auto transition-colors", transparent && "text-white")} />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -44,8 +46,13 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground rounded-md transition-colors relative group"
-              activeProps={{ className: "text-foreground" }}
+              className={cn(
+                "px-3 py-2 text-sm font-medium rounded-md transition-colors relative group",
+                transparent
+                  ? "text-white/85 hover:text-white"
+                  : "text-foreground/80 hover:text-foreground",
+              )}
+              activeProps={{ className: transparent ? "text-white" : "text-foreground" }}
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}
@@ -57,14 +64,19 @@ export function SiteHeader() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-deep transition-all hover:scale-[1.03] shadow-lift"
+            className={cn(
+              "inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-[1.03] shadow-lift",
+              transparent
+                ? "bg-white text-black hover:bg-white/90"
+                : "bg-primary text-primary-foreground hover:bg-primary-deep",
+            )}
           >
             Get in Touch <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
 
         <button
-          className="lg:hidden p-2 -mr-2 text-foreground"
+          className={cn("lg:hidden p-2 -mr-2", transparent ? "text-white" : "text-foreground")}
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >

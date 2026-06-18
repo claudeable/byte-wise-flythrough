@@ -154,6 +154,9 @@ export function VexHero() {
           </div>
         </div>
       </div>
+
+      {/* Smooth fade into next section */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background z-10" />
     </section>
   );
 }
