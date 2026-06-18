@@ -316,7 +316,9 @@ function HomePage() {
           </Stagger>
         </div>
       </section>
+      </div>
     </>
+
   );
 }
 
