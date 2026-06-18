@@ -8,6 +8,7 @@ import { Eyebrow, SectionHeading } from "@/components/site/SectionHeading";
 import { PartnerLogo } from "@/components/site/PartnerLogo";
 import { Counter } from "@/components/site/Counter";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
+import { ScrollPlane } from "@/components/site/ScrollPlane";
 
 export const Route = createFileRoute("/")({
   head: () => ({
