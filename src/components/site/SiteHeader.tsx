@@ -30,15 +30,21 @@ export function SiteHeader({ overHero = false }: { overHero?: boolean }) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-background/85 backdrop-blur-md border-b border-border shadow-[0_2px_30px_-12px_rgba(11,31,75,0.25)]"
+          ? transparent
+            ? "bg-black/30 backdrop-blur-xl border-b border-white/10"
+            : "bg-background/85 backdrop-blur-md border-b border-border shadow-[0_2px_30px_-12px_rgba(11,31,75,0.25)]"
           : "bg-transparent",
       )}
     >
+      {/* Soft top scrim for legibility over hero */}
+      {transparent && (
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/50 via-black/20 to-transparent -z-10" />
+      )}
       <div className="container-bw flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-2" aria-label="Byte Wise home">
-          <Logo className={cn("h-8 w-auto transition-colors", transparent && "text-white")} />
+          <Logo className="h-8 w-auto" variant={transparent ? "light" : "auto"} />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
