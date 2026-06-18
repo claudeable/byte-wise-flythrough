@@ -73,81 +73,12 @@ function HomePage() {
     <>
       <ScrollProgress />
 
-      {/* Scroll-driven plane that flies from hero into next section */}
+      <VexHero />
+
+      {/* Scroll-driven plane that flies into next section */}
       <div className="relative">
         <ScrollPlane />
 
-      {/* HERO */}
-      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
-        <div className="absolute inset-0 -z-10 opacity-[0.05]" style={{
-          backgroundImage: "linear-gradient(oklch(1 0 0 / 0.3) 1px, transparent 1px), linear-gradient(90deg, oklch(1 0 0 / 0.3) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }} />
-
-        <div className="container-bw grid lg:grid-cols-[1.05fr_1fr] gap-12 items-center relative">
-          <div>
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <Eyebrow><Sparkles className="h-3 w-3" /> A Pabari Group company</Eyebrow>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.02] tracking-tight"
-            >
-              Multi-Sector Solutions Across <span className="text-gradient-gold">East Africa</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="mt-6 text-lg md:text-xl text-primary-foreground/75 max-w-xl leading-relaxed"
-            >
-              From smart card identity systems to aviation advisory and commodity trading — Byte Wise delivers where it matters.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-              className="mt-9 flex flex-wrap gap-3"
-            >
-              <Link to="/services" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3.5 rounded-full font-semibold hover:scale-[1.03] transition-transform shadow-glow">
-                Explore Our Services <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold border border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 transition-colors">
-                Get In Touch <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
-
-            {/* mini stats */}
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85, duration: 0.6 }}
-              className="mt-14 grid grid-cols-3 gap-6 max-w-md"
-            >
-              {[
-                { k: 3, s: "", label: "Core verticals" },
-                { k: 4, s: "+", label: "Global partners" },
-                { k: 10, s: "+", label: "Countries served" },
-              ].map((it) => (
-                <div key={it.label}>
-                  <div className="font-display text-3xl md:text-4xl font-bold text-accent">
-                    <Counter to={it.k} suffix={it.s} />
-                  </div>
-                  <div className="mt-1 text-xs text-primary-foreground/60 font-mono uppercase tracking-widest">{it.label}</div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-square w-full max-w-[560px] mx-auto"
-          >
-            <HeroGlobe />
-          </motion.div>
         </div>
       </section>
 
