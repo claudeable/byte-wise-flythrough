@@ -211,7 +211,7 @@
 }
 
 @keyframes plane-fly {
-  0%   { transform: translate3d(-20vw, 12vh, 0) rotate(-2deg); }
+  0%   { transform: translate3d(10vw, 12vh, 0) rotate(-2deg); }
   100% { transform: translate3d(120vw, 8vh, 0) rotate(-2deg); }
 }
-.animate-plane-fly { animation: plane-fly 28s linear infinite; }
+.animate-plane-fly { animation: plane-fly 20s linear infinite; }
