@@ -79,8 +79,6 @@ function HomePage() {
       <div className="relative">
         <ScrollPlane />
 
-        </div>
-      </section>
 
       {/* 3 PILLARS */}
       <section className="py-24 lg:py-32 bg-background">
