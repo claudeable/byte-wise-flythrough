@@ -78,22 +78,6 @@ function AnimatedHeading({
   );
 }
 
-function Plane({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      className={className}
-      fill="none"
-      stroke="white"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2 34 L60 30 L52 22 L48 24 L36 24 L24 8 L20 9 L26 26 L14 28 L8 22 L5 23 L9 30 L4 32 Z" fill="rgba(255,255,255,0.85)" />
-      <path d="M60 30 L56 36 L46 34" />
-    </svg>
-  );
-}
 
 export function VexHero() {
   return (
