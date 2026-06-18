@@ -9,38 +9,198 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as InvestmentsRouteImport } from './routes/investments'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesTradingRouteImport } from './routes/services.trading'
+import { Route as ServicesSoftwareRouteImport } from './routes/services.software'
+import { Route as ServicesAviationRouteImport } from './routes/services.aviation'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestmentsRoute = InvestmentsRouteImport.update({
+  id: '/investments',
+  path: '/investments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesTradingRoute = ServicesTradingRouteImport.update({
+  id: '/trading',
+  path: '/trading',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSoftwareRoute = ServicesSoftwareRouteImport.update({
+  id: '/software',
+  path: '/software',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAviationRoute = ServicesAviationRouteImport.update({
+  id: '/aviation',
+  path: '/aviation',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
+  '/investments': typeof InvestmentsRoute
+  '/partners': typeof PartnersRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/aviation': typeof ServicesAviationRoute
+  '/services/software': typeof ServicesSoftwareRoute
+  '/services/trading': typeof ServicesTradingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
+  '/investments': typeof InvestmentsRoute
+  '/partners': typeof PartnersRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/aviation': typeof ServicesAviationRoute
+  '/services/software': typeof ServicesSoftwareRoute
+  '/services/trading': typeof ServicesTradingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
+  '/investments': typeof InvestmentsRoute
+  '/partners': typeof PartnersRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/aviation': typeof ServicesAviationRoute
+  '/services/software': typeof ServicesSoftwareRoute
+  '/services/trading': typeof ServicesTradingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/insights'
+    | '/investments'
+    | '/partners'
+    | '/services'
+    | '/services/aviation'
+    | '/services/software'
+    | '/services/trading'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/insights'
+    | '/investments'
+    | '/partners'
+    | '/services'
+    | '/services/aviation'
+    | '/services/software'
+    | '/services/trading'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/insights'
+    | '/investments'
+    | '/partners'
+    | '/services'
+    | '/services/aviation'
+    | '/services/software'
+    | '/services/trading'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  InsightsRoute: typeof InsightsRoute
+  InvestmentsRoute: typeof InvestmentsRoute
+  PartnersRoute: typeof PartnersRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investments': {
+      id: '/investments'
+      path: '/investments'
+      fullPath: '/investments'
+      preLoaderRoute: typeof InvestmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +208,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/trading': {
+      id: '/services/trading'
+      path: '/trading'
+      fullPath: '/services/trading'
+      preLoaderRoute: typeof ServicesTradingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/software': {
+      id: '/services/software'
+      path: '/software'
+      fullPath: '/services/software'
+      preLoaderRoute: typeof ServicesSoftwareRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/aviation': {
+      id: '/services/aviation'
+      path: '/aviation'
+      fullPath: '/services/aviation'
+      preLoaderRoute: typeof ServicesAviationRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
 
+interface ServicesRouteChildren {
+  ServicesAviationRoute: typeof ServicesAviationRoute
+  ServicesSoftwareRoute: typeof ServicesSoftwareRoute
+  ServicesTradingRoute: typeof ServicesTradingRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesAviationRoute: ServicesAviationRoute,
+  ServicesSoftwareRoute: ServicesSoftwareRoute,
+  ServicesTradingRoute: ServicesTradingRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  InsightsRoute: InsightsRoute,
+  InvestmentsRoute: InvestmentsRoute,
+  PartnersRoute: PartnersRoute,
+  ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
