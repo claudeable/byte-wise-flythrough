@@ -8,6 +8,7 @@ import { Eyebrow, SectionHeading } from "@/components/site/SectionHeading";
 import { PartnerLogo } from "@/components/site/PartnerLogo";
 import { Counter } from "@/components/site/Counter";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
+import { ScrollPlane } from "@/components/site/ScrollPlane";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -70,6 +71,10 @@ function HomePage() {
   return (
     <>
       <ScrollProgress />
+
+      {/* Scroll-driven plane that flies from hero into next section */}
+      <div className="relative">
+        <ScrollPlane />
 
       {/* HERO */}
       <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
@@ -311,7 +316,9 @@ function HomePage() {
           </Stagger>
         </div>
       </section>
+      </div>
     </>
+
   );
 }
 
