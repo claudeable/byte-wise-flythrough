@@ -1,4 +1,3 @@
-VERCEL_DEPLOY_GUIDE.md
 # Vercel Deployment Guide
 
 ## Prerequisites
@@ -19,7 +18,7 @@ In the Vercel project settings, set:
 |---------|-------|
 | **Framework Preset** | `Other` |
 | **Build Command** | `vite build` |
-| **Output Directory** | `.output/public` |
+| **Output Directory** | *(leave empty — handled by Nitro preset)* |
 | **Install Command** | `bun install` |
 
 ### 3. Environment Variables
@@ -28,20 +27,14 @@ Currently, this project has **no required environment variables**.
 If you add features later (auth, database, APIs), add them in:
 **Vercel Dashboard → Project Settings → Environment Variables**
 
-### 4. Deploy
-Click **Deploy**. Vercel will build and host your site.
-
-## Optional: Edge Runtime
-This project uses TanStack Start with Nitro. To deploy as Vercel Edge Functions instead of static, set this environment variable:
-
-```
-NITRO_PRESET=vercel-edge
-```
-
-Or for serverless:
+You can optionally add:
 ```
 NITRO_PRESET=vercel
 ```
+(The `vite.config.ts` already auto-detects Vercel, so this is optional.)
+
+### 4. Deploy
+Click **Deploy**. Vercel will build and host your site.
 
 ---
 
